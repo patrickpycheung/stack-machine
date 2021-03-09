@@ -1,0 +1,2 @@
+errorMsg:
+  paramNotDecimalNum: "Error: The parameter must be a decimal number!"
