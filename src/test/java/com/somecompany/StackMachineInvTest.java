@@ -3,6 +3,7 @@ package com.somecompany;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.text.DecimalFormat;
 import java.util.Stack;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -49,11 +50,13 @@ public class StackMachineInvTest {
 
 		Double topElement = stackMachineService.inv();
 
+		DecimalFormat df = new DecimalFormat("0.00");
+
 		// Top element
-		assertEquals(0.29, topElement);
+		assertEquals("0.29", df.format(topElement));
 		// Current stack
 		assertEquals(2, currentStack.size());
-		assertEquals(0.29, currentStack.pop());
+		assertEquals("0.29", df.format(currentStack.pop()));
 		// Backup stack
 		assertEquals(2, backupStack.size());
 		assertEquals(3.5, backupStack.pop());
