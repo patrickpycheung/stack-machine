@@ -42,6 +42,18 @@ public class StackMachineService {
 		return currentStack.peek();
 	}
 
+	public void pop() throws IllegalArgumentException {
+
+		// Validate the pop command
+		validationService.validatePop();
+
+		// Backup currentStack
+		backup();
+
+		// Pop top element from stack
+		currentStack.pop();
+	}
+
 	private void backup() {
 		backupStack.removeAllElements();
 		backupStack.addAll(currentStack);

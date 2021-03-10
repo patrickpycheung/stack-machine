@@ -1,2 +1,3 @@
 errorMsg:
   paramNotDecimalNum: "Error: The parameter must be a decimal number!"
+  stackIsEmpty: "Error: Stack is empty!"
