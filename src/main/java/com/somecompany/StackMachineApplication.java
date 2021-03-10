@@ -107,6 +107,7 @@ public class StackMachineApplication implements CommandLineRunner {
 							// CLEAR command
 
 							stackMachineService.clear();
+							System.out.println("There are now no elements in the stack.");
 						} else if (command.equals(Command.ADD.name())) {
 							// ADD command
 
