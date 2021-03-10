@@ -128,7 +128,18 @@ public class StackMachineApplication implements CommandLineRunner {
 						} else if (command.equals(Command.UNDO.name())) {
 							// UNDO command
 
-							stackMachineService.undo();
+							String result = stackMachineService.undo();
+
+							if (result.equals("EMPTY")) {
+								// Stack is empty
+
+								System.out.println("There are now no elements in the stack.");
+							} else {
+								// Stack is not empty
+
+								// Print top element
+								System.out.println("Top element: " + result);
+							}
 						} else if (command.equals(Command.PRINT.name())) {
 							// PRINT command
 
