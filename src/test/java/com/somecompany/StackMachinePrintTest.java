@@ -26,8 +26,8 @@ public class StackMachinePrintTest {
 	@Value("${msg.noElementsInStack}")
 	private String msgNoElementsInStack;
 
-	Stack<Double> currentStack;
-	Stack<Double> backupStack;
+	private Stack<Double> currentStack;
+	private Stack<Double> backupStack;
 
 	@BeforeEach
 	public void init() {

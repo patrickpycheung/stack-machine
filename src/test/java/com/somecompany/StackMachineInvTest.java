@@ -31,8 +31,8 @@ public class StackMachineInvTest {
 	@Value("${errorMsg.zeroCannotBeInverted}")
 	private String errorZeroCannotBeInverted;
 
-	Stack<Double> currentStack;
-	Stack<Double> backupStack;
+	private Stack<Double> currentStack;
+	private Stack<Double> backupStack;
 
 	@BeforeEach
 	public void init() {

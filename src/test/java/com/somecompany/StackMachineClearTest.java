@@ -22,8 +22,8 @@ public class StackMachineClearTest {
 	@Autowired
 	private StackMachine stackMachine;
 
-	Stack<Double> currentStack;
-	Stack<Double> backupStack;
+	private Stack<Double> currentStack;
+	private Stack<Double> backupStack;
 
 	@BeforeEach
 	public void init() {

@@ -28,8 +28,8 @@ public class StackMachinePushTest {
 	@Value("${errorMsg.paramNotDecimalNum}")
 	private String errorParamNotDecimalNum;
 
-	Stack<Double> currentStack;
-	Stack<Double> backupStack;
+	private Stack<Double> currentStack;
+	private Stack<Double> backupStack;
 
 	@BeforeEach
 	public void init() {

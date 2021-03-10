@@ -27,8 +27,8 @@ public class StackMachineNegTest {
 	@Value("${errorMsg.stackIsEmpty}")
 	private String errorStackIsEmpty;
 
-	Stack<Double> currentStack;
-	Stack<Double> backupStack;
+	private Stack<Double> currentStack;
+	private Stack<Double> backupStack;
 
 	@BeforeEach
 	public void init() {
