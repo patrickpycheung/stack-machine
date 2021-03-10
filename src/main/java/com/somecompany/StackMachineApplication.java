@@ -144,6 +144,7 @@ public class StackMachineApplication implements CommandLineRunner {
 
 				} catch (IOException exception) {
 					log.error("Error: IOException has occurred!");
+					System.out.println("Error: IOException has occurred!");
 				}
 			}
 		}
