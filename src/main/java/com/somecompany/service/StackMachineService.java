@@ -121,6 +121,13 @@ public class StackMachineService {
 		return currentStack.push(1 / num);
 	}
 
+	public void undo() throws IllegalArgumentException {
+
+		// Replace currentStack elements with that of backupStack
+		currentStack.removeAllElements();
+		currentStack.addAll(backupStack);
+	}
+
 	private void backup() {
 		backupStack.removeAllElements();
 		backupStack.addAll(currentStack);
