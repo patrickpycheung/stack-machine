@@ -3,6 +3,9 @@ package com.somecompany;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Stack;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +28,18 @@ public class StackMachinePushTest {
 	@Value("${errorMsg.paramNotDecimalNum}")
 	private String errorParamNotDecimalNum;
 
+	Stack<Double> currentStack;
+	Stack<Double> backupStack;
+
+	@BeforeEach
+	public void init() {
+		currentStack = stackMachine.getCurrentStack();
+		backupStack = stackMachine.getBackupStack();
+
+		currentStack.removeAllElements();
+		backupStack.removeAllElements();
+	}
+
 	@Test
 	public void shouldBeAbleToPushParamToStackMachine() {
 		stackMachineService.push("1.5");
@@ -33,12 +48,12 @@ public class StackMachinePushTest {
 		// Returned top element
 		assertThat(topElement.equals("3.5"));
 		// Current stack
-		assertThat(stackMachine.getCurrentStack().size() == 2);
-		assertThat(stackMachine.getCurrentStack().pop() == 3.5);
-		assertThat(stackMachine.getCurrentStack().pop() == 1.5);
+		assertThat(currentStack.size() == 2);
+		assertThat(currentStack.pop() == 3.5);
+		assertThat(currentStack.pop() == 1.5);
 		// Backup stack
-		assertThat(stackMachine.getBackupStack().size() == 1);
-		assertThat(stackMachine.getBackupStack().pop() == 1.5);
+		assertThat(backupStack.size() == 1);
+		assertThat(backupStack.pop() == 1.5);
 	}
 
 	@Test
