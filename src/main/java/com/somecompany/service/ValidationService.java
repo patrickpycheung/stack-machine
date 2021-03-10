@@ -17,6 +17,7 @@ public class ValidationService {
 			Double.valueOf(paramStr);
 		} catch (NumberFormatException exception) {
 			log.error(errorParamNotDecimalNum);
+			throw new IllegalArgumentException(errorParamNotDecimalNum);
 		}
 	}
 }
