@@ -103,7 +103,7 @@ public class StackMachineApplication implements CommandLineRunner {
 								// Stack is not empty
 
 								// Print top element
-								System.out.println("Top element: " + df.format(result));
+								System.out.println("Top element: " + result);
 							}
 						} else if (command.equals(Command.CLEAR.name())) {
 							// CLEAR command
@@ -139,7 +139,7 @@ public class StackMachineApplication implements CommandLineRunner {
 								// Stack is not empty
 
 								// Print top element
-								System.out.println("Top element: " + df.format(result));
+								System.out.println("Top element: " + result);
 							}
 						} else if (command.equals(Command.PRINT.name())) {
 							// PRINT command
