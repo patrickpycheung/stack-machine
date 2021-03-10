@@ -20,8 +20,7 @@ public class ValidationService {
 	@Autowired
 	private StackMachine stackMachine;
 
-	Stack<Double> currentStack;
-	Stack<Double> backupStack;
+	private Stack<Double> currentStack;
 
 	@Value("${errorMsg.inputIsEmpty}")
 	private String errorInputIsEmpty;
@@ -47,7 +46,6 @@ public class ValidationService {
 	@PostConstruct
 	public void init() {
 		currentStack = stackMachine.getCurrentStack();
-		backupStack = stackMachine.getBackupStack();
 	}
 
 	public void validateUsrInput(String usrInput) {

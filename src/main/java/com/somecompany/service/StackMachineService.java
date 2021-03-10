@@ -23,8 +23,8 @@ public class StackMachineService {
 	@Value("${msg.noElementsInStack}")
 	private String msgNoElementsInStack;
 
-	Stack<Double> currentStack;
-	Stack<Double> backupStack;
+	private Stack<Double> currentStack;
+	private Stack<Double> backupStack;
 
 	@PostConstruct
 	public void init() {
