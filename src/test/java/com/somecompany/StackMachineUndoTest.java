@@ -35,12 +35,14 @@ public class StackMachineUndoTest {
 	}
 
 	@Test
-	public void shouldBeAbleToUndoPush() {
+	public void shouldBeAbleToUndoPushWhereTheResultantStackIsNotEmpty() {
 		stackMachineService.push("1.5");
 		stackMachineService.push("3.5");
 
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("1.50", result);
 		// Current stack
 		assertEquals(1, currentStack.size());
 		assertEquals(1.5, currentStack.pop());
@@ -50,13 +52,29 @@ public class StackMachineUndoTest {
 	}
 
 	@Test
+	public void shouldBeAbleToUndoPushWhereTheResultantStackIsEmpty() {
+		stackMachineService.push("1.5");
+
+		String result = stackMachineService.undo();
+
+		// Top element
+		assertEquals("EMPTY", result);
+		// Current stack
+		assertEquals(0, currentStack.size());
+		// Backup stack
+		assertEquals(0, backupStack.size());
+	}
+
+	@Test
 	public void shouldBeAbleToUndoPop() {
 		stackMachineService.push("1.5");
 		stackMachineService.push("3.5");
 		stackMachineService.pop();
 
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("3.50", result);
 		// Current stack
 		assertEquals(2, currentStack.size());
 		assertEquals(3.5, currentStack.pop());
@@ -66,19 +84,35 @@ public class StackMachineUndoTest {
 	}
 
 	@Test
-	public void shouldBeAbleUndoClear() {
+	public void shouldBeAbleUndoClearWhereTheResultantStackIsNotEmpty() {
 		stackMachineService.push("1.5");
 		stackMachineService.push("3.5");
 		stackMachineService.clear();
 
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("3.50", result);
 		// Current stack
 		assertEquals(2, currentStack.size());
 		assertEquals(3.5, currentStack.pop());
 		// Backup stack
 		assertEquals(2, backupStack.size());
 		assertEquals(3.5, backupStack.pop());
+	}
+
+	@Test
+	public void shouldBeAbleUndoClearWhereTheResultantStackIsEmpty() {
+		stackMachineService.clear();
+
+		String result = stackMachineService.undo();
+
+		// Top element
+		assertEquals("EMPTY", result);
+		// Current stack
+		assertEquals(0, currentStack.size());
+		// Backup stack
+		assertEquals(0, backupStack.size());
 	}
 
 	@Test
@@ -87,8 +121,10 @@ public class StackMachineUndoTest {
 		stackMachineService.push("3.5");
 		stackMachineService.add();
 
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("3.50", result);
 		// Current stack
 		assertEquals(2, currentStack.size());
 		assertEquals(3.5, currentStack.pop());
@@ -103,8 +139,10 @@ public class StackMachineUndoTest {
 		stackMachineService.push("3.5");
 		stackMachineService.mul();
 
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("3.50", result);
 		// Current stack
 		assertEquals(2, currentStack.size());
 		assertEquals(3.5, currentStack.pop());
@@ -119,8 +157,10 @@ public class StackMachineUndoTest {
 		stackMachineService.push("3.5");
 		stackMachineService.neg();
 
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("3.50", result);
 		// Current stack
 		assertEquals(2, currentStack.size());
 		assertEquals(3.5, currentStack.pop());
@@ -135,8 +175,10 @@ public class StackMachineUndoTest {
 		stackMachineService.push("3.5");
 		stackMachineService.inv();
 
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("3.50", result);
 		// Current stack
 		assertEquals(2, currentStack.size());
 		assertEquals(3.5, currentStack.pop());
@@ -147,8 +189,10 @@ public class StackMachineUndoTest {
 
 	@Test
 	public void shouldBeAbleToUndoAtTheBeginning() {
-		stackMachineService.undo();
+		String result = stackMachineService.undo();
 
+		// Top element
+		assertEquals("EMPTY", result);
 		// Current stack
 		assertEquals(0, currentStack.size());
 		// Backup stack

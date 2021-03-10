@@ -129,11 +129,18 @@ public class StackMachineService {
 		return currentStack.push(1 / num);
 	}
 
-	public void undo() {
+	public String undo() {
 
 		// Replace currentStack elements with that of backupStack
 		currentStack.removeAllElements();
 		currentStack.addAll(backupStack);
+
+		if (currentStack.size() > 0) {
+			DecimalFormat df = new DecimalFormat("0.00");
+			return String.valueOf(df.format(currentStack.peek()));
+		}
+
+		return "EMPTY";
 	}
 
 	public String print() {
