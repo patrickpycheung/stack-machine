@@ -43,7 +43,7 @@ public class StackMachineService {
 		return currentStack.peek();
 	}
 
-	public void pop() throws IllegalArgumentException {
+	public String pop() throws IllegalArgumentException {
 
 		// Validate the pop command
 		validationService.validatePop();
@@ -53,6 +53,13 @@ public class StackMachineService {
 
 		// Pop top element from stack
 		currentStack.pop();
+
+		if (currentStack.size() > 0) {
+			DecimalFormat df = new DecimalFormat("0.00");
+			return String.valueOf(df.format(currentStack.peek()));
+		}
+
+		return "EMPTY";
 	}
 
 	public void clear() {

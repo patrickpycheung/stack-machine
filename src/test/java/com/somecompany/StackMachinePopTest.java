@@ -40,11 +40,14 @@ public class StackMachinePopTest {
 	}
 
 	@Test
-	public void shouldBeAbleToPopTopElementFromStack() {
+	public void shouldBeAbleToPopTopElementFromStackWhereTheResultantStackIsNotEmpty() {
 		stackMachineService.push("1.5");
 		stackMachineService.push("3.5");
 
-		stackMachineService.pop();
+		String result = stackMachineService.pop();
+
+		// Top element
+		assertEquals("1.50", result);
 
 		// Current stack
 		assertEquals(1, currentStack.size());
@@ -53,6 +56,23 @@ public class StackMachinePopTest {
 		// Backup stack
 		assertEquals(2, backupStack.size());
 		assertEquals(3.5, backupStack.pop());
+		assertEquals(1.5, backupStack.pop());
+	}
+
+	@Test
+	public void shouldBeAbleToPopTopElementFromStackWhereTheResultantStackIsEmpty() {
+		stackMachineService.push("1.5");
+
+		String result = stackMachineService.pop();
+
+		// Top element
+		assertEquals("EMPTY", result);
+
+		// Current stack
+		assertEquals(0, currentStack.size());
+
+		// Backup stack
+		assertEquals(1, backupStack.size());
 		assertEquals(1.5, backupStack.pop());
 	}
 
