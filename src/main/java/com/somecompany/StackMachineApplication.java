@@ -137,7 +137,7 @@ public class StackMachineApplication implements CommandLineRunner {
 						} else if (command.equals(Command.INV.name())) {
 							// INV command
 
-							System.out.println(df.format(stackMachineService.inv()));
+							System.out.println("Top element: " + df.format(stackMachineService.inv()));
 						} else if (command.equals(Command.UNDO.name())) {
 							// UNDO command
 
