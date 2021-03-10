@@ -54,7 +54,7 @@ public class StackMachineService {
 		currentStack.pop();
 	}
 
-	public void clear() throws IllegalArgumentException {
+	public void clear() {
 
 		// Backup currentStack
 		backup();
