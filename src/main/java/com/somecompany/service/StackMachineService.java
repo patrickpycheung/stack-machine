@@ -54,8 +54,18 @@ public class StackMachineService {
 		currentStack.pop();
 	}
 
+	public void clear() throws IllegalArgumentException {
+
+		// Backup currentStack
+		backup();
+
+		// Remove all elements from the stack
+		currentStack.removeAllElements();
+	}
+
 	private void backup() {
 		backupStack.removeAllElements();
 		backupStack.addAll(currentStack);
 	}
+
 }
