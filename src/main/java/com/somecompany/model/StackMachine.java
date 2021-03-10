@@ -4,6 +4,12 @@ import java.util.Stack;
 
 import lombok.Data;
 
+/**
+ * Model of a stack machine.
+ * 
+ * @author patrick
+ * 
+ */
 @Data
 public class StackMachine {
 

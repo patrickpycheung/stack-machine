@@ -13,6 +13,11 @@ import com.somecompany.model.StackMachine;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Backend services for validating the user input and parameters.
+ * 
+ * @author patrick
+ */
 @Service
 @Slf4j
 public class ValidationService {
@@ -48,7 +53,12 @@ public class ValidationService {
 		currentStack = stackMachine.getCurrentStack();
 	}
 
-	public void validateUsrInput(String usrInput) {
+	/**
+	 * Validate the user input from the console.
+	 * 
+	 * @param Raw user input from the console
+	 */
+	public void validateUsrInput(String usrInput) throws IllegalArgumentException {
 		if (usrInput == null || usrInput.equals("")) {
 			// Null or empty input
 
@@ -102,7 +112,13 @@ public class ValidationService {
 		}
 	}
 
-	private void validatePushUsrInput(String[] usrInputArr) {
+	/**
+	 * Check the parameter count for "PUSH" command.
+	 * 
+	 * @param Raw user input from the console
+	 * @throws IllegalArgumentException
+	 */
+	private void validatePushUsrInput(String[] usrInputArr) throws IllegalArgumentException {
 		if (!(usrInputArr.length == 2)) {
 			// Invalid "PUSH" input
 
@@ -121,7 +137,13 @@ public class ValidationService {
 		}
 	}
 
-	private void validateNonPushUsrInput(String[] usrInputArr) {
+	/**
+	 * Check the parameter count for commands other than "PUSH".
+	 * 
+	 * @param Raw user input from the console
+	 * @throws IllegalArgumentException
+	 */
+	private void validateNonPushUsrInput(String[] usrInputArr) throws IllegalArgumentException {
 		if (!(usrInputArr.length == 1)) {
 			// Invalid non-"PUSH" input
 
@@ -130,6 +152,12 @@ public class ValidationService {
 		}
 	}
 
+	/**
+	 * Validate the "PUSH" operation validity.
+	 * 
+	 * @param The decimal number to be pushed
+	 * @throws IllegalArgumentException
+	 */
 	public void validatePush(String paramStr) throws IllegalArgumentException {
 		try {
 			Double.valueOf(paramStr);
@@ -141,6 +169,11 @@ public class ValidationService {
 		}
 	}
 
+	/**
+	 * Validate the "POP" operation validity.
+	 * 
+	 * @throws IllegalArgumentException
+	 */
 	public void validatePop() throws IllegalArgumentException {
 		if (currentStack.isEmpty()) {
 			// Empty stack
@@ -150,6 +183,11 @@ public class ValidationService {
 		}
 	}
 
+	/**
+	 * Validate the "ADD" operation validity.
+	 * 
+	 * @throws IllegalArgumentException
+	 */
 	public void validateAdd() throws IllegalArgumentException {
 		if (!(currentStack.size() >= 2)) {
 			// Not enough elements to perform add
@@ -159,6 +197,11 @@ public class ValidationService {
 		}
 	}
 
+	/**
+	 * Validate the "MUL" operation validity.
+	 * 
+	 * @throws IllegalArgumentException
+	 */
 	public void validateMul() throws IllegalArgumentException {
 		if (!(currentStack.size() >= 2)) {
 			// Not enough elements to perform add
@@ -168,6 +211,11 @@ public class ValidationService {
 		}
 	}
 
+	/**
+	 * Validate the "NEG" operation validity.
+	 * 
+	 * @throws IllegalArgumentException
+	 */
 	public void validateNeg() throws IllegalArgumentException {
 		if (currentStack.isEmpty()) {
 			// Empty stack
@@ -177,6 +225,11 @@ public class ValidationService {
 		}
 	}
 
+	/**
+	 * Validate the "INV" operation validity.
+	 * 
+	 * @throws IllegalArgumentException
+	 */
 	public void validateInv() throws IllegalArgumentException {
 		if (currentStack.isEmpty()) {
 			// Empty stack

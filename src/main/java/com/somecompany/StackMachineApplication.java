@@ -18,6 +18,11 @@ import com.somecompany.service.ValidationService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Main application.
+ * 
+ * @author patrick
+ */
 @SpringBootApplication
 @Slf4j
 public class StackMachineApplication implements CommandLineRunner {

@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 
 import com.somecompany.model.StackMachine;
 
+/**
+ * Backend services for handling commands.
+ * 
+ * @author patrick
+ */
 @Service
 public class StackMachineService {
 
@@ -32,6 +37,13 @@ public class StackMachineService {
 		backupStack = stackMachine.getBackupStack();
 	}
 
+	/**
+	 * Handle "PUSH" command.
+	 * 
+	 * @param The decimal number to be pushed
+	 * @return The top element after the operation
+	 * @throws IllegalArgumentException
+	 */
 	public Double push(String paramStr) throws IllegalArgumentException {
 
 		// Validate the param
@@ -47,6 +59,12 @@ public class StackMachineService {
 		return currentStack.peek();
 	}
 
+	/**
+	 * Handle "POP" command.
+	 * 
+	 * @return The top element after the operation if the resultant stack is not empty, "EMPTY" if it is
+	 * @throws IllegalArgumentException
+	 */
 	public String pop() throws IllegalArgumentException {
 
 		// Validate the pop command
@@ -66,6 +84,9 @@ public class StackMachineService {
 		return "EMPTY";
 	}
 
+	/**
+	 * Handle "CLEAR" command.
+	 */
 	public void clear() {
 
 		// Backup currentStack
@@ -75,6 +96,12 @@ public class StackMachineService {
 		currentStack.removeAllElements();
 	}
 
+	/**
+	 * Handle "ADD" command.
+	 * 
+	 * @return The top element after the operation
+	 * @throws IllegalArgumentException
+	 */
 	public Double add() throws IllegalArgumentException {
 
 		// Validate the add command
@@ -90,6 +117,12 @@ public class StackMachineService {
 		return currentStack.push(firstNum + secondNum);
 	}
 
+	/**
+	 * Handle "MUL" command.
+	 * 
+	 * @return The top element after the operation
+	 * @throws IllegalArgumentException
+	 */
 	public Double mul() throws IllegalArgumentException {
 
 		// Validate the add command
@@ -105,6 +138,12 @@ public class StackMachineService {
 		return currentStack.push(firstNum * secondNum);
 	}
 
+	/**
+	 * Handle "NEG" command.
+	 * 
+	 * @return The top element after the operation
+	 * @throws IllegalArgumentException
+	 */
 	public Double neg() throws IllegalArgumentException {
 
 		// Validate the neg command
@@ -119,6 +158,12 @@ public class StackMachineService {
 		return currentStack.push(-1 * num);
 	}
 
+	/**
+	 * Handle "INV" command.
+	 * 
+	 * @return The top element after the operation
+	 * @throws IllegalArgumentException
+	 */
 	public Double inv() throws IllegalArgumentException {
 
 		// Validate the inv command
@@ -133,6 +178,11 @@ public class StackMachineService {
 		return currentStack.push(1 / num);
 	}
 
+	/**
+	 * Handle "UNDO" command.
+	 * 
+	 * @return The top element after the operation if the resultant stack is not empty, "EMPTY" if it is
+	 */
 	public String undo() {
 
 		// Replace currentStack elements with that of backupStack
@@ -147,6 +197,11 @@ public class StackMachineService {
 		return "EMPTY";
 	}
 
+	/**
+	 * Handle "PRINT" command.
+	 * 
+	 * @return The elements in the stack, from the order of top to bottom.
+	 */
 	public String print() {
 
 		if (currentStack.isEmpty()) {
@@ -168,6 +223,9 @@ public class StackMachineService {
 		}
 	}
 
+	/**
+	 * Backup the currentStack before operation.
+	 */
 	private void backup() {
 		backupStack.removeAllElements();
 		backupStack.addAll(currentStack);

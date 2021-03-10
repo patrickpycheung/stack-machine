@@ -7,6 +7,11 @@ import org.springframework.context.annotation.Configuration;
 
 import com.somecompany.model.StackMachine;
 
+/**
+ * Configuration for the Stack Machine application.
+ * 
+ * @author patrick
+ */
 @Configuration
 public class StackMachineConfig {
 
