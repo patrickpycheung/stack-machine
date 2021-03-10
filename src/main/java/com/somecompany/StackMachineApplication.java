@@ -30,6 +30,8 @@ public class StackMachineApplication implements CommandLineRunner {
 	@Autowired
 	private Environment env;
 
+	private static DecimalFormat df = new DecimalFormat("0.00");
+
 	public static void main(String[] args) {
 		SpringApplication.run(StackMachineApplication.class, args);
 	}
@@ -76,7 +78,7 @@ public class StackMachineApplication implements CommandLineRunner {
 							// Check is double
 							Double.valueOf(command);
 
-							System.out.println("Top element: " + stackMachineService.push(command));
+							System.out.println("Top element: " + df.format(stackMachineService.push(command)));
 						} catch (NumberFormatException exception) {
 							// Not "direct push"
 							// Just continue to see which command it is
@@ -87,7 +89,7 @@ public class StackMachineApplication implements CommandLineRunner {
 						if (command.equals(Command.PUSH.name())) {
 							// PUSH command
 
-							System.out.println("Top element: " + stackMachineService.push(usrInputArr[1]));
+							System.out.println("Top element: " + df.format(stackMachineService.push(usrInputArr[1])));
 						} else if (command.equals(Command.POP.name())) {
 							// POP command
 
@@ -101,7 +103,7 @@ public class StackMachineApplication implements CommandLineRunner {
 								// Stack is not empty
 
 								// Print top element
-								System.out.println("Top element: " + result);
+								System.out.println("Top element: " + df.format(result));
 							}
 						} else if (command.equals(Command.CLEAR.name())) {
 							// CLEAR command
@@ -111,19 +113,18 @@ public class StackMachineApplication implements CommandLineRunner {
 						} else if (command.equals(Command.ADD.name())) {
 							// ADD command
 
-							System.out.println("Top element: " + stackMachineService.add());
+							System.out.println("Top element: " + df.format(stackMachineService.add()));
 						} else if (command.equals(Command.MUL.name())) {
 							// MUL command
 
-							System.out.println("Top element: " + stackMachineService.mul());
+							System.out.println("Top element: " + df.format(stackMachineService.mul()));
 						} else if (command.equals(Command.NEG.name())) {
 							// NEG command
 
-							System.out.println("Top element: " + stackMachineService.neg());
+							System.out.println("Top element: " + df.format(stackMachineService.neg()));
 						} else if (command.equals(Command.INV.name())) {
 							// INV command
 
-							DecimalFormat df = new DecimalFormat("0.00");
 							System.out.println(df.format(stackMachineService.inv()));
 						} else if (command.equals(Command.UNDO.name())) {
 							// UNDO command
@@ -138,7 +139,7 @@ public class StackMachineApplication implements CommandLineRunner {
 								// Stack is not empty
 
 								// Print top element
-								System.out.println("Top element: " + result);
+								System.out.println("Top element: " + df.format(result));
 							}
 						} else if (command.equals(Command.PRINT.name())) {
 							// PRINT command
