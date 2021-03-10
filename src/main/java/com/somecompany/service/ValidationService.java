@@ -38,6 +38,8 @@ public class ValidationService {
 		try {
 			Double.valueOf(paramStr);
 		} catch (NumberFormatException exception) {
+			// Param not a decimal number
+
 			log.error(errorParamNotDecimalNum);
 			throw new IllegalArgumentException(errorParamNotDecimalNum);
 		}
