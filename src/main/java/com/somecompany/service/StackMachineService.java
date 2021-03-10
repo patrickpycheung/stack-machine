@@ -78,6 +78,21 @@ public class StackMachineService {
 		return currentStack.push(firstNum + secondNum);
 	}
 
+	public Double mul() throws IllegalArgumentException {
+
+		// Validate the add command
+		validationService.validateMul();
+
+		// Backup currentStack
+		backup();
+
+		Double firstNum = currentStack.pop();
+		Double secondNum = currentStack.pop();
+
+		// Push product of top 2 elements to the stack
+		return currentStack.push(firstNum * secondNum);
+	}
+
 	private void backup() {
 		backupStack.removeAllElements();
 		backupStack.addAll(currentStack);

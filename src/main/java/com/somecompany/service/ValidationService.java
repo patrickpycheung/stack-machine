@@ -31,6 +31,9 @@ public class ValidationService {
 	@Value("${errorMsg.notEnoughElementsToAdd}")
 	private String errorNotEnoughElementsToAdd;
 
+	@Value("${errorMsg.notEnoughElementsToMul}")
+	private String errorNotEnoughElementsToMul;
+
 	@PostConstruct
 	public void init() {
 		currentStack = stackMachine.getCurrentStack();
@@ -63,6 +66,15 @@ public class ValidationService {
 
 			log.error(errorNotEnoughElementsToAdd);
 			throw new IllegalArgumentException(errorNotEnoughElementsToAdd);
+		}
+	}
+
+	public void validateMul() throws IllegalArgumentException {
+		if (!(currentStack.size() >= 2)) {
+			// Not enough elements to perform add
+
+			log.error(errorNotEnoughElementsToMul);
+			throw new IllegalArgumentException(errorNotEnoughElementsToMul);
 		}
 	}
 }
