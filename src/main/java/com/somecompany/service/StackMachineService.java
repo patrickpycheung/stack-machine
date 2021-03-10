@@ -1,5 +1,6 @@
 package com.somecompany.service;
 
+import java.text.DecimalFormat;
 import java.util.Stack;
 
 import javax.annotation.PostConstruct;
@@ -126,6 +127,27 @@ public class StackMachineService {
 		// Replace currentStack elements with that of backupStack
 		currentStack.removeAllElements();
 		currentStack.addAll(backupStack);
+	}
+
+	public String print() {
+
+		if (currentStack.isEmpty()) {
+			return "There are now no elements in the stack.";
+		} else {
+			// Stack not empty
+
+			String printStr = "";
+
+			DecimalFormat df = new DecimalFormat("0.00");
+
+			for (Double num : currentStack) {
+				printStr = df.format(num).concat(",").concat(printStr);
+			}
+
+			// Remove final ","
+			printStr = printStr.substring(0, printStr.length() - 1);
+			return printStr;
+		}
 	}
 
 	private void backup() {
