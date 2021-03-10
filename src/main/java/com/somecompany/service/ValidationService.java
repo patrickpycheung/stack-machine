@@ -77,4 +77,13 @@ public class ValidationService {
 			throw new IllegalArgumentException(errorNotEnoughElementsToMul);
 		}
 	}
+
+	public void validateNeg() throws IllegalArgumentException {
+		if (currentStack.isEmpty()) {
+			// Empty stack
+
+			log.error(errorStackIsEmpty);
+			throw new IllegalArgumentException(errorStackIsEmpty);
+		}
+	}
 }

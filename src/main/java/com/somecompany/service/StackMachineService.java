@@ -93,6 +93,20 @@ public class StackMachineService {
 		return currentStack.push(firstNum * secondNum);
 	}
 
+	public Double neg() throws IllegalArgumentException {
+
+		// Validate the neg command
+		validationService.validateNeg();
+
+		// Backup currentStack
+		backup();
+
+		Double num = currentStack.pop();
+
+		// Push the negate of the top element to the stack
+		return currentStack.push(-1 * num);
+	}
+
 	private void backup() {
 		backupStack.removeAllElements();
 		backupStack.addAll(currentStack);
