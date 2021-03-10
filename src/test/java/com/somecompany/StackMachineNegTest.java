@@ -1,6 +1,5 @@
 package com.somecompany;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -65,6 +64,6 @@ public class StackMachineNegTest {
 			;
 		});
 
-		assertThat(exception.equals(errorStackIsEmpty));
+		assertEquals(errorStackIsEmpty, exception.getMessage());
 	}
 }

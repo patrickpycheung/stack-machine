@@ -1,6 +1,6 @@
 package com.somecompany;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Stack;
@@ -50,14 +50,14 @@ public class StackMachineAddTest {
 		Double topElement = stackMachineService.add();
 
 		// Top element
-		assertThat(topElement == 5.0);
+		assertEquals(5.0, topElement);
 		// Current stack
-		assertThat(currentStack.size() == 1);
-		assertThat(currentStack.pop() == 5.0);
+		assertEquals(1, currentStack.size());
+		assertEquals(5.0, currentStack.pop());
 		// Backup stack
-		assertThat(backupStack.size() == 2);
-		assertThat(backupStack.pop() == 3.5);
-		assertThat(backupStack.pop() == 1.5);
+		assertEquals(2, backupStack.size());
+		assertEquals(3.5, backupStack.pop());
+		assertEquals(1.5, backupStack.pop());
 	}
 
 	@Test
@@ -69,6 +69,6 @@ public class StackMachineAddTest {
 			;
 		});
 
-		assertThat(exception.equals(errorNotEnoughElementsToAdd));
+		assertEquals(errorNotEnoughElementsToAdd, exception.getMessage());
 	}
 }

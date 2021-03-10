@@ -1,6 +1,6 @@
 package com.somecompany;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Stack;
@@ -47,13 +47,13 @@ public class StackMachinePopTest {
 		stackMachineService.pop();
 
 		// Current stack
-		assertThat(currentStack.size() == 1);
-		assertThat(currentStack.pop() == 1.5);
+		assertEquals(1, currentStack.size());
+		assertEquals(1.5, currentStack.pop());
 
 		// Backup stack
-		assertThat(backupStack.size() == 2);
-		assertThat(backupStack.pop() == 3.5);
-		assertThat(backupStack.pop() == 1.5);
+		assertEquals(2, backupStack.size());
+		assertEquals(3.5, backupStack.pop());
+		assertEquals(1.5, backupStack.pop());
 	}
 
 	@Test
@@ -63,6 +63,6 @@ public class StackMachinePopTest {
 			;
 		});
 
-		assertThat(exception.equals(errorStackIsEmpty));
+		assertEquals(errorStackIsEmpty, exception.getMessage());
 	}
 }

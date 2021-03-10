@@ -1,6 +1,6 @@
 package com.somecompany;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Stack;
@@ -46,14 +46,14 @@ public class StackMachinePushTest {
 		Double topElement = stackMachineService.push("3.5");
 
 		// Returned top element
-		assertThat(topElement.equals("3.5"));
+		assertEquals(3.5, topElement);
 		// Current stack
-		assertThat(currentStack.size() == 2);
-		assertThat(currentStack.pop() == 3.5);
-		assertThat(currentStack.pop() == 1.5);
+		assertEquals(2, currentStack.size());
+		assertEquals(3.5, currentStack.pop());
+		assertEquals(1.5, currentStack.pop());
 		// Backup stack
-		assertThat(backupStack.size() == 1);
-		assertThat(backupStack.pop() == 1.5);
+		assertEquals(1, backupStack.size());
+		assertEquals(1.5, backupStack.pop());
 	}
 
 	@Test
@@ -62,7 +62,7 @@ public class StackMachinePushTest {
 			stackMachineService.push("");
 		});
 
-		assertThat(exception.equals(errorParamNotDecimalNum));
+		assertEquals(errorParamNotDecimalNum, exception.getMessage());
 	}
 
 	@Test
@@ -71,6 +71,6 @@ public class StackMachinePushTest {
 			stackMachineService.push("a");
 		});
 
-		assertThat(exception.equals(errorParamNotDecimalNum));
+		assertEquals(errorParamNotDecimalNum, exception.getMessage());
 	}
 }

@@ -1,6 +1,6 @@
 package com.somecompany;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Stack;
 
@@ -46,10 +46,10 @@ public class StackMachineClearTest {
 		stackMachineService.clear();
 
 		// Current stack
-		assertThat(currentStack.size() == 0);
+		assertEquals(0, currentStack.size());
 
 		// Backup stack
-		assertThat(backupStack.size() == 0);
+		assertEquals(2, backupStack.size());
 	}
 
 	@Test
@@ -57,9 +57,9 @@ public class StackMachineClearTest {
 		stackMachineService.clear();
 
 		// Current stack
-		assertThat(currentStack.size() == 0);
+		assertEquals(0, currentStack.size());
 
 		// Backup stack
-		assertThat(backupStack.size() == 0);
+		assertEquals(0, backupStack.size());
 	}
 }
