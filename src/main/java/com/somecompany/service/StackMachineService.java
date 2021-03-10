@@ -6,6 +6,7 @@ import java.util.Stack;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.somecompany.model.StackMachine;
@@ -18,6 +19,9 @@ public class StackMachineService {
 
 	@Autowired
 	private StackMachine stackMachine;
+
+	@Value("${msg.noElementsInStack}")
+	private String msgNoElementsInStack;
 
 	Stack<Double> currentStack;
 	Stack<Double> backupStack;
@@ -146,7 +150,7 @@ public class StackMachineService {
 	public String print() {
 
 		if (currentStack.isEmpty()) {
-			return "There are now no elements in the stack.";
+			return msgNoElementsInStack;
 		} else {
 			// Stack not empty
 

@@ -1,4 +1,10 @@
+msg:
+  noElementsInStack: "There are now no elements in the stack."
+
 errorMsg:
+  ioException: "Error: IOException has occurred!"
+  inputIsEmpty: "Error: Empty input not allowed!"
+  invalidInput: "Error: Invalid input!"
   paramNotDecimalNum: "Error: The parameter must be a decimal number!"
   stackIsEmpty: "Error: Stack is empty!"
   notEnoughElementsToAdd: "Error: Not enough elements to perform add!"

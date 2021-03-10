@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,6 +30,12 @@ public class StackMachineApplication implements CommandLineRunner {
 
 	@Autowired
 	private Environment env;
+
+	@Value("${errorMsg.ioException}")
+	private String errorIOException;
+
+	@Value("${msg.noElementsInStack}")
+	private String msgNoElementsInStack;
 
 	private static DecimalFormat df = new DecimalFormat("0.00");
 
@@ -98,7 +105,7 @@ public class StackMachineApplication implements CommandLineRunner {
 							if (result.equals("EMPTY")) {
 								// Stack is empty
 
-								System.out.println("There are now no elements in the stack.");
+								System.out.println(msgNoElementsInStack);
 							} else {
 								// Stack is not empty
 
@@ -156,8 +163,8 @@ public class StackMachineApplication implements CommandLineRunner {
 					}
 
 				} catch (IOException exception) {
-					log.error("Error: IOException has occurred!");
-					System.out.println("Error: IOException has occurred!");
+					log.error(errorIOException);
+					System.out.println(errorIOException);
 				}
 			}
 		}

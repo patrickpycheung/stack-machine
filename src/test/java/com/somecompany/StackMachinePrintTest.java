@@ -7,6 +7,7 @@ import java.util.Stack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -21,6 +22,9 @@ public class StackMachinePrintTest {
 
 	@Autowired
 	private StackMachine stackMachine;
+
+	@Value("${msg.noElementsInStack}")
+	private String msgNoElementsInStack;
 
 	Stack<Double> currentStack;
 	Stack<Double> backupStack;
@@ -48,6 +52,6 @@ public class StackMachinePrintTest {
 	@Test
 	public void shouldBeAbleToShowMessageIfStackIsEmpty() {
 		String printStr = stackMachineService.print();
-		assertEquals("There are now no elements in the stack.", printStr);
+		assertEquals(msgNoElementsInStack, printStr);
 	}
 }

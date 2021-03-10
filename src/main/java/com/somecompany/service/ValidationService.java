@@ -23,6 +23,12 @@ public class ValidationService {
 	Stack<Double> currentStack;
 	Stack<Double> backupStack;
 
+	@Value("${errorMsg.inputIsEmpty}")
+	private String errorInputIsEmpty;
+
+	@Value("${errorMsg.invalidInput}")
+	private String errorInvalidInput;
+
 	@Value("${errorMsg.paramNotDecimalNum}")
 	private String errorParamNotDecimalNum;
 
@@ -48,8 +54,8 @@ public class ValidationService {
 		if (usrInput == null || usrInput.equals("")) {
 			// Null or empty input
 
-			log.error("Error: Empty input not allowed!");
-			throw new IllegalArgumentException("Error: Empty input not allowed!");
+			log.error(errorInputIsEmpty);
+			throw new IllegalArgumentException(errorInputIsEmpty);
 		}
 
 		String[] usrInputArr = usrInput.split(" ");
@@ -65,8 +71,8 @@ public class ValidationService {
 			if (usrInputArr.length > 1) {
 				// Invalid "direct push" input
 
-				log.error("Error: Invalid input!");
-				throw new IllegalArgumentException("Error: Invalid input!");
+				log.error(errorInvalidInput);
+				throw new IllegalArgumentException(errorInvalidInput);
 			}
 
 			// Is valid "direct push"
@@ -93,8 +99,8 @@ public class ValidationService {
 		} else {
 			// Invalid command
 
-			log.error("Error: Invalid input!");
-			throw new IllegalArgumentException("Error: Invalid input!");
+			log.error(errorInvalidInput);
+			throw new IllegalArgumentException(errorInvalidInput);
 		}
 	}
 
@@ -102,8 +108,8 @@ public class ValidationService {
 		if (!(usrInputArr.length == 2)) {
 			// Invalid "PUSH" input
 
-			log.error("Error: Invalid input!");
-			throw new IllegalArgumentException("Error: Invalid input!");
+			log.error(errorInvalidInput);
+			throw new IllegalArgumentException(errorInvalidInput);
 		}
 
 		try {
@@ -112,8 +118,8 @@ public class ValidationService {
 		} catch (NumberFormatException exception) {
 			// The param is not decimal number
 
-			log.error("Error: Invalid input!");
-			throw new IllegalArgumentException("Error: Invalid input!");
+			log.error(errorInvalidInput);
+			throw new IllegalArgumentException(errorInvalidInput);
 		}
 	}
 
@@ -121,8 +127,8 @@ public class ValidationService {
 		if (!(usrInputArr.length == 1)) {
 			// Invalid non-"PUSH" input
 
-			log.error("Error: Invalid input!");
-			throw new IllegalArgumentException("Error: Invalid input!");
+			log.error(errorInvalidInput);
+			throw new IllegalArgumentException(errorInvalidInput);
 		}
 	}
 
