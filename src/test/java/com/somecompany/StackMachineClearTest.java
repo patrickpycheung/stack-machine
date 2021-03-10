@@ -7,7 +7,6 @@ import java.util.Stack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -22,9 +21,6 @@ public class StackMachineClearTest {
 
 	@Autowired
 	private StackMachine stackMachine;
-
-	@Value("${errorMsg.stackIsEmpty}")
-	private String errorStackIsEmpty;
 
 	Stack<Double> currentStack;
 	Stack<Double> backupStack;

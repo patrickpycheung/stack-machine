@@ -25,12 +25,6 @@ public class StackMachineMulTest {
 	@Autowired
 	private StackMachine stackMachine;
 
-	@Value("${errorMsg.stackIsEmpty}")
-	private String errorStackIsEmpty;
-
-	@Value("${errorMsg.notEnoughElementsToAdd}")
-	private String errorNotEnoughElementsToAdd;
-
 	@Value("${errorMsg.notEnoughElementsToMul}")
 	private String errorNotEnoughElementsToMul;
 

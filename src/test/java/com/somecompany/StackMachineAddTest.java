@@ -24,9 +24,6 @@ public class StackMachineAddTest {
 	@Autowired
 	private StackMachine stackMachine;
 
-	@Value("${errorMsg.stackIsEmpty}")
-	private String errorStackIsEmpty;
-
 	@Value("${errorMsg.notEnoughElementsToAdd}")
 	private String errorNotEnoughElementsToAdd;
 
