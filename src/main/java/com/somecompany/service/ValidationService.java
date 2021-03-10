@@ -34,6 +34,9 @@ public class ValidationService {
 	@Value("${errorMsg.notEnoughElementsToMul}")
 	private String errorNotEnoughElementsToMul;
 
+	@Value("${errorMsg.zeroCannotBeInverted}")
+	private String errorZeroCannotBeInverted;
+
 	@PostConstruct
 	public void init() {
 		currentStack = stackMachine.getCurrentStack();
@@ -84,6 +87,24 @@ public class ValidationService {
 
 			log.error(errorStackIsEmpty);
 			throw new IllegalArgumentException(errorStackIsEmpty);
+		}
+	}
+
+	public void validateInv() throws IllegalArgumentException {
+		if (currentStack.isEmpty()) {
+			// Empty stack
+
+			log.error(errorStackIsEmpty);
+			throw new IllegalArgumentException(errorStackIsEmpty);
+		}
+
+		Double num = currentStack.peek();
+
+		if (num.equals(0.0D)) {
+			// Arithmetic error, attempting to invert zero
+
+			log.error(errorZeroCannotBeInverted);
+			throw new IllegalArgumentException(errorZeroCannotBeInverted);
 		}
 	}
 }

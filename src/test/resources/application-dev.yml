@@ -3,3 +3,4 @@ errorMsg:
   stackIsEmpty: "Error: Stack is empty!"
   notEnoughElementsToAdd: "Error: Not enough elements to perform add!"
   notEnoughElementsToMul: "Error: Not enough elements to perform multiply!"
+  zeroCannotBeInverted: "Error: 0 cannot be inverted!"

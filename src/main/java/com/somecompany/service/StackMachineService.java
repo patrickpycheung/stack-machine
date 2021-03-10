@@ -107,6 +107,22 @@ public class StackMachineService {
 		return currentStack.push(-1 * num);
 	}
 
+	public Double inv() throws IllegalArgumentException {
+
+		// Validate the inv command
+		validationService.validateInv();
+
+		// Backup currentStack
+		backup();
+
+		Double num = currentStack.pop();
+
+		// Invert the top element, and round it up to 2 decimal places
+		Double invertedNum = Math.round((1 / num) * 100.0) / 100.0;
+		// Push the inverse of the top element to the stack
+		return currentStack.push(invertedNum);
+	}
+
 	private void backup() {
 		backupStack.removeAllElements();
 		backupStack.addAll(currentStack);
