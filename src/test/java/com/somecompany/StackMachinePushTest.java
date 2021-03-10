@@ -28,8 +28,10 @@ public class StackMachinePushTest {
 	@Test
 	public void shouldBeAbleToPushParamToStackMachine() {
 		stackMachineService.push("1.5");
-		stackMachineService.push("3.5");
+		Double topElement = stackMachineService.push("3.5");
 
+		// Returned top element
+		assertThat(topElement.equals("3.5"));
 		// Current stack
 		assertThat(stackMachine.getCurrentStack().size() == 2);
 		assertThat(stackMachine.getCurrentStack().pop() == 3.5);

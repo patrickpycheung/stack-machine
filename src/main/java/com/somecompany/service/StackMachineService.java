@@ -2,6 +2,8 @@ package com.somecompany.service;
 
 import java.util.Stack;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,16 @@ public class StackMachineService {
 	@Autowired
 	private StackMachine stackMachine;
 
-	public void push(String paramStr) throws IllegalArgumentException {
+	Stack<Double> currentStack;
+	Stack<Double> backupStack;
+
+	@PostConstruct
+	public void init() {
+		currentStack = stackMachine.getCurrentStack();
+		backupStack = stackMachine.getBackupStack();
+	}
+
+	public Double push(String paramStr) throws IllegalArgumentException {
 
 		// Validate the param
 		validationService.validatePush(paramStr);
@@ -27,12 +38,12 @@ public class StackMachineService {
 		backup();
 
 		// Push param to stack
-		stackMachine.getCurrentStack().push(param);
+		currentStack.push(param);
+		return currentStack.peek();
 	}
 
 	private void backup() {
-		Stack<Double> backupStack = stackMachine.getBackupStack();
 		backupStack.removeAllElements();
-		backupStack.addAll(stackMachine.getCurrentStack());
+		backupStack.addAll(currentStack);
 	}
 }
